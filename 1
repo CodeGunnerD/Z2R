@@ -1,1 +1,49 @@
-// EJERCICIO 1
+// EJERCICIO 1 cadenas
+function esPalindromo(pal: string): Boolean;
+var
+  i, j: Integer;
+begin
+  i := 1;
+  j := length(pal);
+  while i < j do
+  begin
+    if pal[i] <> pal[j] then
+    begin
+      Result := False;
+      Exit;
+    end;
+    Inc(i);
+    Dec(j);
+  end;
+  Result := True;
+end;
+
+function ejercicio1a(cad: string): string;
+var
+  i: Integer;
+  palabra, resultado: string;
+begin
+  palabra := '';
+  resultado := '';
+  cad := cad + ' '; // Para procesar la última palabra
+
+  for i := 1 to length(cad) do
+  begin
+    if cad[i] <> ' ' then
+      palabra := palabra + cad[i]
+    else
+    begin
+      if palabra <> '' then
+      begin
+        if esPalindromo(palabra) then
+          resultado := resultado + palabra + ' ';
+        palabra := '';
+      end;
+    end;
+  end;
+
+  Result := 'son palindromes : ' + resultado;
+end;
+
+//llamada
+  Edit3.Text := ejercicio1a(cad);
